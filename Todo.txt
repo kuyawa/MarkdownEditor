@@ -1,0 +1,16 @@
+TODO:
+
+- appicon
+- on md edit, refresh web and text
+- save window position/size
+- attach loader/saver to Document class
+- on save/close store file name in user defaults
+- Design toolbar: new, open, save - h1..h5, b i s q li url img code hr
+- toolbar icons
+
+----
+
+x bigger text in editor
+x css style in webview
+x Organize UI
+x md panel, html panel, web panel
