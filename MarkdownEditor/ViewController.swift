@@ -31,8 +31,8 @@ class ViewController: NSViewController, NSTextStorageDelegate {
     func start() {
         print("Hello!")
         
-        textEditor.font = NSFont.init(name: "Helvetica Neue", size: 16.0)
-        textViewer.font = NSFont.init(name: "Helvetica Neue", size: 16.0)
+        textEditor.font = NSFont(name: "Helvetica Neue", size: 16.0)
+        textViewer.font = NSFont(name: "Helvetica Neue", size: 16.0)
         
         textEditor.textStorage?.delegate = self
 
@@ -69,7 +69,7 @@ class ViewController: NSViewController, NSTextStorageDelegate {
     }
     
     func updateViewers() {
-        let mkdn = textEditor.string ?? ""
+        let mkdn = textEditor.string
         let text = Markdown().parse(mkdn)
         let html = template.replacingOccurrences(of: "{{TEXT}}", with: text)
         textViewer.string = text
@@ -81,11 +81,11 @@ class ViewController: NSViewController, NSTextStorageDelegate {
         let timer2: DispatchTime = .now() + .milliseconds(3000)
         
         DispatchQueue.main.asyncAfter(deadline: timer1) {
-            self.buttonSave.image = NSImage(named: "icon_saved")
+            self.buttonSave.image = NSImage(named: NSImage.Name(rawValue: "icon_saved"))
         }
         
         DispatchQueue.main.asyncAfter(deadline: timer2) {
-            self.buttonSave.image = NSImage(named: "icon_save")
+            self.buttonSave.image = NSImage(named: NSImage.Name(rawValue: "icon_save"))
         }
     }
     
