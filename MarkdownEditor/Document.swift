@@ -25,7 +25,7 @@ class Document: NSDocument {
 
     }
 
-    override class func autosavesInPlace() -> Bool {
+    override class var autosavesInPlace: Bool {
         return true
     }
 
@@ -43,7 +43,7 @@ class Document: NSDocument {
     }
     
     override func close() {
-        Swift.print("Close: ", self.fileURL)
+        Swift.print("Close: ", self.fileURL ?? "Document")
         saveLastDocumentUrl()
         super.close()
     }
@@ -88,8 +88,9 @@ class Document: NSDocument {
         }
         
         viewController.notifySave()
-        let text = viewController.textEditor.string ?? ""
-        Swift.print("Saving text to ", self.fileURL)
+        let text = viewController.textEditor.string
+        
+        Swift.print("Saving text to ", self.fileURL ?? "Document")
         
         if let data = text.data(using: .utf8) {
             return data
@@ -104,8 +105,8 @@ class Document: NSDocument {
     // Assign content to view
     override func makeWindowControllers() {
         // Returns the Storyboard that contains your Document window.
-        let storyboard = NSStoryboard(name: "Main", bundle: nil)
-        let windowController = storyboard.instantiateController(withIdentifier: "Document Window Controller") as! NSWindowController
+        let storyboard = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil)
+        let windowController = storyboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "Document Window Controller")) as! NSWindowController
         self.addWindowController(windowController)
         
         // Custom code

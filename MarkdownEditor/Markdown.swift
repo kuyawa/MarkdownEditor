@@ -44,7 +44,7 @@ extension String {
     func matches(_ pattern: String) -> Bool {
         guard self.characters.count > 0 else { return false }
         if let first = self.range(of: pattern, options: .regularExpression) {
-            let match = self.substring(with: first)
+            let match = self[first]
             return !match.isEmpty
         }
         
