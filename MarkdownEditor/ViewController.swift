@@ -31,8 +31,8 @@ class ViewController: NSViewController, NSTextStorageDelegate {
     func start() {
         print("Hello!")
         
-        textEditor.font = NSFont.init(name: "Helvetica Neue", size: 16.0)
-        textViewer.font = NSFont.init(name: "Helvetica Neue", size: 16.0)
+        textEditor.font = NSFont(name: "Helvetica Neue", size: 16.0)
+        textViewer.font = NSFont(name: "Helvetica Neue", size: 16.0)
         
         textEditor.textStorage?.delegate = self
 
